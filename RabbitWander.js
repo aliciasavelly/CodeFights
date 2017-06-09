@@ -1,6 +1,41 @@
 function rabbitWander(matrix) {
-  let middlePos = findMiddlePos(matrix);
-  console.log(middlePos);
+  let middlePosArr = findMiddlePos(matrix);
+  let middlePos = [];
+  let greatest = -1;
+
+  for (let i = 0; i < middlePosArr.length; i++) {
+    if (matrix[middlePosArr[i][0]][middlePosArr[i][1]] > greatest) {
+      middlePos = middlePosArr[i];
+      greatest = matrix[middlePosArr[i][0]][middlePosArr[i][1]];
+    }
+  }
+
+  let carrotsEaten = greatest;
+  matrix[middlePos[0]][middlePos[1]] = 0;
+  // console.log(matrix);
+
+  let adjPos = findAdjacentPos(matrix[0].length, matrix.length, middlePos);
+  // console.log(adjPos);
+  count = 0;
+  // console.log(carrotsEaten);
+  while (greatest > 0) {
+    greatest = -1;
+    for (let j = 0; j < adjPos.length; j++) {
+      if (matrix[adjPos[j][0]][adjPos[j][1]] > greatest) {
+        greatest = matrix[adjPos[j][0]][adjPos[j][1]];
+        middlePos = adjPos[j];
+      }
+    }
+    matrix[middlePos[0]][middlePos[1]] = 0;
+    adjPos = findAdjacentPos(matrix[0].length, matrix.length, middlePos);
+    carrotsEaten += greatest;
+    // console.log(carrotsEaten);
+    count += 1;
+  }
+
+  // console.log(middlePos);
+  // console.log(greatest);
+  return carrotsEaten;
 }
 
 function findMiddlePos(matrix) {
@@ -24,8 +59,20 @@ function findMiddlePos(matrix) {
   }
 }
 
-function findAdjacentPos() {
+function findAdjacentPos(width, height, pos) {
+  let adj = [];
 
+  for (var i = -1; i <= 1; i++) {
+    if (pos[0] + i >= 0 && pos[0] + i < height) {
+      for (var j = -1; j <= 1; j++) {
+        if (pos[1] + j >= 0 && pos[1] + j < width && (j != 0 || i != 0)) {
+          adj.push([pos[0] + i, pos[1] + j]);
+        }
+      }
+    }
+  }
+
+  return adj;
 }
 
 let m1 = [[5, 7, 8, 6, 3],
@@ -45,11 +92,11 @@ let m3 = [[5, 7, 8, 6, 3],
           [4, 6, 3, 4, 9],
           [3, 1, 0, 5, 8],
           [7, 0, 1, 2, 7]]
-console.log(rabbitWander(m3) == 27);
+console.log(rabbitWander(m3) == 30);
 
 let m4 = [[5, 7, 8, 6],
           [0, 0, 7, 0],
           [4, 6, 3, 4],
           [3, 1, 0, 5],
           [2, 0, 1, 3]]
-console.log(rabbitWander(m4) == 27);
+console.log(rabbitWander(m4) == 33);
