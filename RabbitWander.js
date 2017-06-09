@@ -4,34 +4,28 @@ function rabbitWander(matrix) {
 }
 
 function findMiddlePos(matrix) {
-  var rows = [];
-  var cols = [];
   if (matrix.length % 2 == 0) {
-    rows.push(matrix.length / 2);
-    rows.push(matrix.length / 2 - 1);
+    if (matrix[0].length % 2 == 0) {
+      return [ [matrix.length / 2, matrix[0].length / 2],
+               [matrix.length / 2, matrix[0].length / 2 - 1],
+               [matrix.length / 2 - 1, matrix[0].length / 2],
+               [matrix.length / 2 - 1, matrix[0].length / 2 - 1] ];
+    } else {
+      return [ [matrix.length / 2, Math.floor(matrix[0].length / 2)],
+               [matrix.length / 2 - 1, Math.floor(matrix[0].length / 2)] ];
+    }
   } else {
-    rows.push(Math.floor(matrix.length / 2));
+    if (matrix[0].length % 2 == 0) {
+      return [ [Math.floor(matrix.length / 2), matrix[0].length / 2],
+               [Math.floor(matrix.length / 2), matrix[0].length / 2 - 1] ];
+    } else {
+      return [ [Math.floor(matrix.length / 2), Math.floor(matrix[0].length / 2)] ];
+    }
   }
-  if (matrix[0].length % 2 == 0) {
-    cols.push(matrix[0].length / 2);
-    cols.push(matrix[0].length / 2 - 1);
-  } else {
-    cols.push(Math.floor(matrix[0].length / 2));
-  }
+}
 
-  if (rows.length == 1) {
-    if (cols.length == 1) {
-      return [[rows[0], cols[0]]];
-    } else {
-      return [[rows[0], cols[0]], [rows[0], cols[1]]];
-    }
-  } else {
-    if (cols.length == 1) {
-      return [[rows[0], cols[0]], [rows[1], cols[0]]];
-    } else {
-      return [[rows[0], cols[0]], [rows[0], cols[1]], [rows[1], cols[0]], [rows[1], cols[1]]];
-    }
-  }
+function findAdjacentPos() {
+
 }
 
 let m1 = [[5, 7, 8, 6, 3],
