@@ -1,27 +1,21 @@
 function isSubstitutionCipher(string1, string2) {
-    var hash1 = {};
-
-    for (var i = 0; i < string1.length; i++) {
-        if (hash1[string1[i]] == undefined) {
-            hash1[string1[i]] = string2[i];
-        } else {
-            if (hash1[string1[i]] != string2[i]) {
-                return false;
-            }
-        }
-    }
-
-    hash1 = {};
-
-    for (var i = 0; i < string2.length; i++) {
-        if (hash1[string2[i]] == undefined) {
-            hash1[string2[i]] = string1[i];
-        } else {
-            if (hash1[string2[i]] != string1[i]) {
-                return false;
-            }
-        }
+    if (checkHash(string1, string2) == false || checkHash(string2, string1) == false) {
+        return false;
     }
 
     return true;
+}
+
+function checkHash(string1, string2) {
+    var hash = {};
+
+    for (var i = 0; i < string2.length; i++) {
+        if (hash[string2[i]] == undefined) {
+            hash[string2[i]] = string1[i];
+        } else {
+            if (hash[string2[i]] != string1[i]) {
+                return false;
+            }
+        }
+    }
 }
