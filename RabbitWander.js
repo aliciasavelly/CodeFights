@@ -4,9 +4,11 @@ function rabbitWander(matrix) {
   let greatest = -1;
 
   for (let i = 0; i < middlePosArr.length; i++) {
-    if (matrix[middlePosArr[i][0]][middlePosArr[i][1]] > greatest) {
+    var posVal = matrix[middlePosArr[i][0]][middlePosArr[i][1]];
+
+    if (posVal > greatest) {
       middlePos = middlePosArr[i];
-      greatest = matrix[middlePosArr[i][0]][middlePosArr[i][1]];
+      greatest = posVal;
     }
   }
 
