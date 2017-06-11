@@ -5,13 +5,9 @@ function prefixSumsToSuffixSums(prefixSums) {
         regArr.push(prefixSums[i] - prefixSums[j]);
     }
 
-    var result = [];
-    for (var m = 0; m < prefixSums.length; m++) {
-        var current = 0;
-        for (var n = m; n < prefixSums.length; n++) {
-            current += regArr[n];
-        }
-        result.push(current);
+    var result = [regArr[regArr.length - 1]];
+    for (var m = prefixSums.length - 2; m >= 0; m--) {
+        result.unshift(regArr[m] + result[0]);
     }
 
     return result;
