@@ -44,3 +44,13 @@ function findFirstSubstringOccurrence(s, x) {
   //
   // return -1;
 }
+
+/*
+s is equal to a long string; x is equal to a potential substring.
+Find the position in s where x first occurs.
+
+ex.
+s = "AliciaSavelly"
+x = "Sav"
+result = 6
+*/
