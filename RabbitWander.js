@@ -12,11 +12,10 @@ function rabbitWander(matrix) {
     }
   }
 
-  let carrotsEaten = greatest;
   matrix[middlePos[0]][middlePos[1]] = 0;
-
+  let carrotsEaten = greatest;
   let adjPos = findAdjacentPos(matrix[0].length, matrix.length, middlePos);
-  count = 0;
+
   while (greatest > 0) {
     greatest = -1;
     for (let j = 0; j < adjPos.length; j++) {
@@ -28,7 +27,6 @@ function rabbitWander(matrix) {
     }
     matrix[middlePos[0]][middlePos[1]] = 0;
     carrotsEaten += greatest;
-    count += 1;
   }
 
   return carrotsEaten;
