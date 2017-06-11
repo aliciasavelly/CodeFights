@@ -94,3 +94,12 @@ let m4 = [[5, 7, 8, 6],
           [3, 1, 0, 5],
           [2, 0, 1, 3]]
 console.log(rabbitWander(m4) == 33);
+
+/*
+
+Given a matrix, start in the middle. If there is more than one possible middle
+point in the matrix, start at the one that has the greatest value. Until no
+more carrots are adjacent to your position, wander to the adjacent position with
+the most carrots. Return the number of total carrots consumed.
+
+*/
