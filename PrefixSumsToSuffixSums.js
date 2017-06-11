@@ -12,3 +12,19 @@ function prefixSumsToSuffixSums(prefixSums) {
 
   return result;
 }
+
+console.log(prefixSumsToSuffixSums([1, 3, 6, 10, 15]));
+
+/*
+
+Find the suffix sum for the array that the given input is a prefix sum of.
+
+ex.
+original array
+[1, 2, 3, 4, 5]
+prefix sum
+[1, 3, 6, 10, 15]
+suffix sum
+[15, 14, 12, 9, 5]
+
+*/
