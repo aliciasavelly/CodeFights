@@ -1,19 +1,29 @@
-function cipher26(message) {
+function cipher26forward(message) {
     var total = 0;
     var result = "";
 
     for (var i = 0; i < message.length; i++) {
         total += (message.charCodeAt(i) - 97);
-        // console.log(total);
         result += String.fromCharCode((total % 26) + 97);
-        // console.log(String.fromCharCode(total + 97 % 26));
-        console.log(total);
-        // console.log(result);
-        console.log(result);
     }
 
     return result;
 }
+
+function cipher26backward(message) {
+  var toSubtract = 0;
+  var result = "";
+
+  for (var i = 0; i < message.length; i++) {
+    result += (26 % message.charCodeAt(i) - toSubtract - 97);
+    toSubtract += message.charCodeAt(i) - 97;
+  }
+
+  return result;
+}
+
+console.log(cipher26backward("taiaiaertkixquxjnfxxdh"));
+console.log(cipher26forward("thisisencryptedmessage"));
 
 /*
 
