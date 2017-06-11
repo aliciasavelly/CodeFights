@@ -15,8 +15,12 @@ function cipher26backward(message) {
   var result = "";
 
   for (var i = 0; i < message.length; i++) {
-    result += (26 % message.charCodeAt(i) - toSubtract - 97);
-    toSubtract += message.charCodeAt(i) - 97;
+    var r = message.charCodeAt(i) - toSubtract - 97;
+    while (r < 0) {
+      r += 26;
+    }
+    result += String.fromCharCode(r + 97);
+    toSubtract += (message.charCodeAt(i) - toSubtract - 97);
   }
 
   return result;
