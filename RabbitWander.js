@@ -12,29 +12,23 @@ function rabbitWander(matrix) {
 
   let carrotsEaten = greatest;
   matrix[middlePos[0]][middlePos[1]] = 0;
-  // console.log(matrix);
 
   let adjPos = findAdjacentPos(matrix[0].length, matrix.length, middlePos);
-  // console.log(adjPos);
   count = 0;
-  // console.log(carrotsEaten);
   while (greatest > 0) {
     greatest = -1;
     for (let j = 0; j < adjPos.length; j++) {
       if (matrix[adjPos[j][0]][adjPos[j][1]] > greatest) {
         greatest = matrix[adjPos[j][0]][adjPos[j][1]];
         middlePos = adjPos[j];
+        adjPos = findAdjacentPos(matrix[0].length, matrix.length, middlePos);
       }
     }
     matrix[middlePos[0]][middlePos[1]] = 0;
-    adjPos = findAdjacentPos(matrix[0].length, matrix.length, middlePos);
     carrotsEaten += greatest;
-    // console.log(carrotsEaten);
     count += 1;
   }
 
-  // console.log(middlePos);
-  // console.log(greatest);
   return carrotsEaten;
 }
 
