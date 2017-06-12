@@ -1,7 +1,13 @@
 function isSuperPalindrome(s, k) {
-    var toTest = s.slice(0, k * 2);
+    for (var i = 0; i < s.length; i += k * 2) {
+        var toTest = s.slice(i, k * 2 + i);
 
-    return isPalindrome(toTest);
+        if (isPalindrome(toTest) == false) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function isPalindrome(string) {
