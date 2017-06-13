@@ -23,3 +23,54 @@ Guaranteed constraints:
 [output] integer
 
 */
+
+function factorSum(n) {
+    var factors = [];
+    var current = n;
+
+    while (!isPrime(current)) {
+        for (var i = 2; i <= n / 2; i++) {
+            if (isPrime(current)) {
+                factors.push(current);
+                break;
+            } else if (isPrime(i) && (current / i) % 1 == 0) {
+                factors.push(i);
+                current /= i;
+                // console.log(factors);
+                // console.log(current);
+                i--;
+            }
+        }
+
+        current = facAdd(factors);
+        // console.log(factors);
+        // console.log(current);
+        factors = [];
+    }
+
+    // console.log(isPrime(2));
+    // console.log(isPrime(17));
+    // console.log(isPrime(20));
+
+    return current;
+}
+
+function facAdd(arr) {
+    var sum = 0;
+
+    for (var i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+
+    return sum;
+}
+
+function isPrime(num) {
+    for (var i = 2; i < num; i++) {
+        if ((num / i) % 1 == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
