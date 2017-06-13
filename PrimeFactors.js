@@ -27,30 +27,29 @@ Guaranteed constraints:
 function factorSum(n) {
     var factors = [];
     var current = n;
+    var primes = {2: true};
 
-    while (!isPrime(current)) {
+    for (var i = 3; i <= n; i++) {
+        if (isPrime(i)) {
+            primes[i] = true;
+        }
+    }
+
+    while (!primes[current]) {
         for (var i = 2; i <= n / 2; i++) {
-            if (isPrime(current)) {
+            if (primes[current]) {
                 factors.push(current);
                 break;
-            } else if (isPrime(i) && (current / i) % 1 == 0) {
+            } else if (primes[i] && (current / i) % 1 == 0) {
                 factors.push(i);
                 current /= i;
-                // console.log(factors);
-                // console.log(current);
                 i--;
             }
         }
 
         current = facAdd(factors);
-        // console.log(factors);
-        // console.log(current);
         factors = [];
     }
-
-    // console.log(isPrime(2));
-    // console.log(isPrime(17));
-    // console.log(isPrime(20));
 
     return current;
 }
