@@ -16,37 +16,28 @@ function isTreeSymmetric(t) {
 Iterative Solution
 */
 function areTreesMirror(t1, t2) {
-  var leftSide = [t1];
-  var rightSide = [t2];
-  while (leftSide && rightSide) {
-    console.log(leftSide);
-    console.log(rightSide);
-    currentL = leftSide.pop();
-    currentR = rightSide.pop();
+    var leftSide = [t1];
+    var rightSide = [t2];
 
-    if (currentL == undefined && currentR == undefined) {
-      continue;
+    while (leftSide.length > 0 && rightSide.length > 0) {
+        currentL = leftSide.pop();
+        currentR = rightSide.pop();
+
+        if (currentL == undefined && currentR == undefined) {
+            continue;
+        } else if (currentL == undefined || currentR == undefined) {
+            return false;
+        } else if (currentL.value != currentR.value) {
+            return false;
+        }
+
+        leftSide.push(currentL.left);
+        rightSide.push(currentR.right);
+        leftSide.push(currentL.right);
+        rightSide.push(currentR.left);
     }
 
-    if (currentL == undefined || currentR == undefined) {
-      console.log("or");
-      return false;
-    }
-
-    if (currentL.value != currentR.value) {
-      console.log("not eq");
-      console.log(currentL);
-      console.log(currentR);
-      return false;
-    }
-
-    leftSide.push(currentL.left);
-    rightSide.push(currentR.right);
-    leftSide.push(currentL.right);
-    leftSide.push(currentR.left);
-  }
-
-  return leftSide.length == 0 && rightSide.length == 0;
+    return leftSide.length == 0 && rightSide.length == 0;
 }
 
 /*
