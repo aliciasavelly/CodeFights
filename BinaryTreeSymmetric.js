@@ -1,7 +1,17 @@
-function Tree(x) {
-  this.value = x;
-  this.left = null;
-  this.right = null;
+class Tree {
+  constructor(x) {
+    this.value = x;
+    this.left = null;
+    this.right = null;
+  }
+
+  left(l) {
+    this.left = l;
+  }
+
+  right(r) {
+    this.right = r;
+  }
 }
 
 function isTreeSymmetric(t) {
@@ -57,42 +67,12 @@ function areTreesMirror(t1, t2) {
   return areTreesMirror(t1.right, t2.left);
 }
 
+let tree = new Tree(1);
+tree.left = new Tree(2);
+tree.right = new Tree(2);
+tree.left.left = new Tree(3);
+tree.left.right = new Tree(4);
+tree.right.left = new Tree(4);
+tree.right.right = new Tree(3);
 
-// let root = Tree(1);
-// root.left = Tree(2);
-// root.right = Tree(2);
-// root.left.left = Tree(3);
-// root.left.right = Tree(4);
-// root.right.left = Tree(4);
-// root.right.right = Tree(3);
-let root = {
-  "value": 1,
-  "left": {
-    "value": 2,
-    "left": {
-      "value": 3,
-      "left": null,
-      "right": null
-    },
-    "right": {
-      "value": 4,
-      "left": null,
-      "right", null
-    }
-  },
-  "right": {
-    "value": 2,
-    "left": {
-      "value": 4,
-      "left": null,
-      "right", null
-    },
-    "right": {
-      "value": 3,
-      "left": null,
-      "right": null
-    }
-  }
-};
-
-console.log(isTreeSymmetric(root));
+console.log(isTreeSymmetric(tree));
