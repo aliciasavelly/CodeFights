@@ -38,10 +38,8 @@ function areTreesMirror(t1, t2) {
             return false;
         }
 
-        leftSide.push(currentL.left);
-        rightSide.push(currentR.right);
-        leftSide.push(currentL.right);
-        rightSide.push(currentR.left);
+        leftSide.push(currentL.left, currentL.right);
+        rightSide.push(currentR.right, currentR.left);
     }
 
     return leftSide.length == 0 && rightSide.length == 0;
