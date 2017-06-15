@@ -15,11 +15,7 @@ class Tree {
 }
 
 function isTreeSymmetric(t) {
-    if (t == undefined) {
-        return true;
-    }
-
-    return areTreesMirror(t.left, t.right);
+    return (t ? areTreesMirror(t.left, t.right) : true);
 }
 
 /*
