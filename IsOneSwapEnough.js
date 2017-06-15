@@ -5,7 +5,8 @@ function isOneSwapEnough(inputString) {
 
   for (let i = 0; i < inputString.length - 1; i++) {
     if (inputString[i] != inputString[i + 1]) {
-      let mixed = inputString.slice(0, i) + inputString[i + 1] + inputString[i] + inputString.slice(i + 2, inputString.length);
+      let mixed = inputString.slice(0, i) + inputString[i + 1] + inputString[i]
+                + inputString.slice(i + 2, inputString.length);
       if (isPalindrome(mixed)) {
         return true;
       }
