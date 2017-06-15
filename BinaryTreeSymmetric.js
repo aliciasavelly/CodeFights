@@ -48,15 +48,9 @@ Recursive Solution
 function areTreesMirror(t1, t2) {
   if (t1 == undefined && t2 == undefined) {
     return true;
-  }
-  if (t1 == undefined || t2 == undefined) {
+  } else if (t1 == undefined || t2 == undefined || t1.value != t2.value) {
     return false;
-  }
-  if (t1.value != t2.value) {
-    return false;
-  }
-
-  if (areTreesMirror(t1.left, t2.right) == false) {
+  } else if (areTreesMirror(t1.left, t2.right) == false) {
     return false;
   }
 
@@ -64,11 +58,41 @@ function areTreesMirror(t1, t2) {
 }
 
 
-let root = Tree(1)
-root.left = Node(2)
-root.right = Node(2)
-root.left.left = Node(3)
-root.left.right = Node(4)
-root.right.left = Node(4)
-root.right.right = Node(3)
+// let root = Tree(1);
+// root.left = Tree(2);
+// root.right = Tree(2);
+// root.left.left = Tree(3);
+// root.left.right = Tree(4);
+// root.right.left = Tree(4);
+// root.right.right = Tree(3);
+let root = {
+  "value": 1,
+  "left": {
+    "value": 2,
+    "left": {
+      "value": 3,
+      "left": null,
+      "right": null
+    },
+    "right": {
+      "value": 4,
+      "left": null,
+      "right", null
+    }
+  },
+  "right": {
+    "value": 2,
+    "left": {
+      "value": 4,
+      "left": null,
+      "right", null
+    },
+    "right": {
+      "value": 3,
+      "left": null,
+      "right": null
+    }
+  }
+};
+
 console.log(isTreeSymmetric(root));
