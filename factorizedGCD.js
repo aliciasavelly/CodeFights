@@ -13,7 +13,7 @@ function factorizedGCD(a, b) {
 }
 
 function findGCD(first, second) {
-  for (let i = Math.min(first, second); i >= 2; i--) {
+  for (let i = Math.min(first, second); i > 0; i--) {
     if ((first / i) % 1 === 0 && (second / i) % 1 === 0) {
       return i;
     }
@@ -21,3 +21,6 @@ function findGCD(first, second) {
 
   return 1;
 }
+
+console.log(factorizedGCD());
+console.log(findGCD(270, 126));
