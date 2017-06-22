@@ -12,11 +12,7 @@ function calendar(month, year) {
     end = 30;
   }
   if (month == 2) {
-    if (leapYear(year)) {
-      end = 29;
-    } else {
-      end = 28;
-    }
+    end = leapYear(year) ? 29 : 28;
   }
 
   let idx = startIdx;
@@ -31,16 +27,11 @@ function calendar(month, year) {
     }
   }
 
-  if (result[5].length == 0) {
-    result[5] = [0, 0, 0, 0, 0, 0, 0];
-
-    while (result[4].length < 7) {
+  while (result[4].length < 7) {
       result[4].push(0);
-    }
-  } else {
-    while (result[5].length < 7) {
-        result[5].push(0);
-    }
+  }
+  while (result[5].length < 7) {
+      result[5].push(0);
   }
 
   return result;
