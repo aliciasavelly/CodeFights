@@ -1,8 +1,8 @@
 function isArrayDense(a) {
-  var min = Infinity;
-  var max = -Infinity;
+  let min = Infinity;
+  let max = -Infinity;
 
-  for (var i = 0; i < a.length; i++) {
+  for (let i = 0; i < a.length; i++) {
     if (a[i] < min) {
       min = a[i];
     }
@@ -11,14 +11,19 @@ function isArrayDense(a) {
     }
   }
 
+  let hash = {};
   if ((max - min) == (a.length - 1)) {
-    var result = true;
-    for (var i = min; i < min + a.length; i++) {
-      if (!a.includes(i)) {
-        result = false;
+
+    for (let i = 0; i < a.length; i++) {
+      hash[a[i]] = true;
+    }
+
+    for (let i = min; i < min + a.length; i++) {
+      if (!hash[i]) {
+        return false;
       }
     }
-    return result;
+    return true;
   }
 
   return false;
