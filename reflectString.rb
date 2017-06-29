@@ -3,11 +3,11 @@ def reflectString(inputString)
   result = ""
 
   97.upto(122) do |i|
-    hash[i.chr()] = (122 - (i - 97)).chr()
+    hash[i.chr()] = (122 - i - 97).chr()
   end
 
   inputString.each_char do |char|
-    result +=  hash[char]
+    result += hash[char]
   end
 
   result
