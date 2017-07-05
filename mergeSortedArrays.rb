@@ -2,15 +2,21 @@ def merge_lists(list1, list2)
   i = 0
   j = 0
   result = []
+  count = 0
+  len = list1.length + list2.length
 
-  while result.length < list1.length + list2.length
+  while count < len
     if list1[i] && list2[j] && list1[i] < list2[j]
       result << list1[i]
       i += 1
     elsif list2[j]
       result << list2[j]
       j += 1
+    elsif list1[i]
+      result << list1[i]
+      i += 1
     end
+    count += 1
   end
 
   result
