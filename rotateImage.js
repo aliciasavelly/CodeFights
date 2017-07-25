@@ -1,25 +1,22 @@
 function rotateImage(a) {
-  let current;
-  let next;
-
+  let current, next;
 
   for (let j = 0; j < a.length / 2; j++) {
-
     for (let i = j; i < a.length - 1 - j; i++) {
-      next = a[i + j][a.length - 1 - j];
-      a[i + j][a.length - 1 - j] = a[0 + j][i + j];
+      next = a[i][a.length - 1 - j];
+      a[i][a.length - 1 - j] = a[j][i];
       current = next;
 
-      next = a[a.length - 1 - j][a.length - 1 - i - j];
-      a[a.length - 1 - j][a.length - 1 - i - j] = current;
+      next = a[a.length - 1 - j][a.length - 1 - i];
+      a[a.length - 1 - j][a.length - 1 - i] = current;
       current = next;
 
-      next = a[a.length - 1 - i - j][0 + j];
-      a[a.length - 1 - i - j][0 + j] = current;
+      next = a[a.length - 1 - i][j];
+      a[a.length - 1 - i][j] = current;
       current = next;
 
-      next = a[0 + j][i + j];
-      a[0 + j][i + j] = current;
+      next = a[j][i];
+      a[j][i] = current;
       current = next;
     }
   }
