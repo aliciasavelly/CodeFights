@@ -27,7 +27,11 @@ class ReverseString {
 }
 
 class Interface extends ReverseString {
+  whatIsString() {
+    return this.string;
+  }
 }
 
 let i = new Interface("coding is fun");
 console.log(i.reverseString());
+console.log(i.whatIsString());
