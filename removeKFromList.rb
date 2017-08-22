@@ -7,39 +7,39 @@
 # end
 #
 def removeKFromList(l, k)
-#     current = l
-#     result = []
+  return [] unless l
 
-#     while current
-#         result << current.value if current.value != k
+  while l.value == k && l.next
+    l = l.next
+  end
 
-#         current = current.next
-#     end
+  return [] if l.value == k
 
-#     result
-#
-    return [] unless l
-    # p l
-    # p l.next
-    while l.value == k && l.next
-       l = l.next
-    end
-    return [] if l.value == k
-    last = l
-    # p l
-    current = l.next
-    # p current
-    # p current.next
-    while current
-        p current.value
-        if current.value == k
-            last.next = current.next
-        else
-            last = last.next
-        end
+  last = l
+  current = last.next
 
-        current = current.next
+  while current
+    if current.value == k
+      last.next = current.next
+    else
+      last = last.next
     end
 
-    l
+    current = current.next
+  end
+
+  l
 end
+
+# def removeKFromList(l, k)
+#   current = l
+#   result = []
+#
+#   while current
+#     result << current.value if current.value != k
+#
+#     current = current.next
+#   end
+#
+#   result
+# end
