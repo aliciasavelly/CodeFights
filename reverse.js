@@ -10,7 +10,6 @@ function reverseString(string) {
 
 console.log(reverseString("alicia") == "aicila");
 
-
 class ReverseString {
   constructor(string) {
     this.string = string;
@@ -28,9 +27,6 @@ class ReverseString {
 }
 
 class Interface extends ReverseString {
-  constructor(string) {
-    this.string = string;
-  }
 }
 
 let i = new Interface("coding is fun");
