@@ -1,26 +1,33 @@
 function groupingDishes(dishes) {
-  let ingredients = {};
+  let currentDish;
+  let grouping = {};
 
   for (let i = 0; i < dishes.length; i++) {
-    let currentDish = dishes[i][0];
+    currentDish = dishes[i][0];
 
     for (let j = 1; j < dishes[i].length; j++) {
-      let currentIngredient = dishes[i][j];
-      if (ingredients[currentIngredient]) {
-        ingredients[currentIngredient].push(currentDish);
+      if (grouping[dishes[i][j]] != undefined) {
+        grouping[dishes[i][j]].push(currentDish);
       } else {
-        ingredients[currentIngredient] = [currentDish];
+        grouping[dishes[i][j]] = [currentDish];
       }
     }
   }
 
+  Object.keys(grouping).forEach( ingredient => {
+    if (grouping[ingredient].length < 2) {
+      delete grouping[ingredient];
+    }
+  });
+
+  let sortedIngredients = Object.keys(grouping).sort();
+
   let result = [];
 
-  for (let food in ingredients) {
-    if (ingredients[food].length > 1) {
-      result.push([food].concat(ingredients[food].sort()));
-    }
+  for (let i = 0; i < sortedIngredients.length; i++) {
+    let curIngredient = sortedIngredients[i];
+    result.push([curIngredient].concat(grouping[curIngredient].sort()));
   }
 
-  return result.sort();
+  return result;
 }
